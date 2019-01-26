@@ -1,4 +1,5 @@
 
+
 # Paging Demo
 
 This ASP.NET Core MVC Web API is an example of how to easily add paging and sorting to your application.
@@ -34,6 +35,10 @@ For example:
 Pull Requests are always welcome. 
 
 Ensure the PR description clearly describes the problem and solution. It should also include the relevant issue number (if applicable).
+
+## Inspiration
+
+The self-discoverable aspect of this project was inspired by [Nate Barbettini](https://recaffeinate.co/)'s course on Web APIs.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
