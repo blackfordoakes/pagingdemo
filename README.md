@@ -10,7 +10,7 @@ Swagger is enabled for the solution, so you can test is directly from a browser.
 
 ## How it works
 
-This solution takes advantage of .NET's model binding. If you open [PagingOptions.cs](src\Models\PagingOptions.cs), you'll see it has two properties named Offset and Limit. These are nullable ints, so they are not required. .NET's model binding will grab any inputs from the query string with those names and set the property values. Then in [HomeController.cs](src\Controllers\HomeController.cs), we add **[FromQuery] PagingOptions pagingOptions** to any endpoint we want to page.
+This solution takes advantage of .NET's model binding. If you open **src\Models\PagingOptions.cs**, you'll see it has two properties named Offset and Limit. These are nullable ints, so they are not required. .NET's model binding will grab any inputs from the query string with those names and set the property values. Then in **src\Controllers\HomeController.cs**, we add **[FromQuery] PagingOptions pagingOptions** to any endpoint we want to page.
 
 Bonus tip:  We're using dependency injection to pull default paging options from our appSettings file.
 
@@ -29,7 +29,7 @@ Detailed information is very helpful to understand an issue.
 For example:
 * How to reproduce the issue, step-by-step.
 * The expected behavior (or what is wrong).
-* 
+
 ## Pull Requests
 Pull Requests are always welcome. 
 
