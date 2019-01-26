@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using PagingDemo.Filters;
 using PagingDemo.Models;
 using PagingDemo.Services;
 using Swashbuckle.AspNetCore.Swagger;
@@ -28,7 +29,11 @@ namespace PagingDemo
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc(options =>
+            {
+                options.Filters.Add<LinkRewritingFilter>();
+            })
+            .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.Configure<PagingOptions>(Configuration.GetSection("DefaultPagingOptions"));
             services.AddSingleton<INumbersServicce, NumbersServicce>();

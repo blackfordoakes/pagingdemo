@@ -25,22 +25,36 @@ namespace PagingDemo.Controllers
 
         [HttpGet("numbers", Name = nameof(GetNumbers))]
         [ProducesResponseType(200)]
-        public ActionResult<PagedResults<int>> GetNumbers([FromQuery] PagingOptions pagingOptions)
+        public ActionResult<Collection<int>> GetNumbers([FromQuery] PagingOptions pagingOptions)
         {
             pagingOptions = _defaultPagingOptions.Replace(pagingOptions);
 
             var numbers = _numbersService.GetNumbers(pagingOptions);
-            return numbers;
+
+            var collection = PagedCollection<int>.Create<PagedCollection<int>>(
+                Link.ToCollection(nameof(GetRandomNumbers)),
+                numbers.Items.ToArray(),
+                numbers.TotalSize,
+                pagingOptions);
+
+            return collection;
         }
 
         [HttpGet("random", Name = nameof(GetRandomNumbers))]
         [ProducesResponseType(200)]
-        public ActionResult<PagedResults<int>> GetRandomNumbers([FromQuery] PagingOptions pagingOptions)
+        public ActionResult<Collection<int>> GetRandomNumbers([FromQuery] PagingOptions pagingOptions)
         {
             pagingOptions = _defaultPagingOptions.Replace(pagingOptions);
 
             var numbers = _numbersService.GetRandomNumbers(pagingOptions);
-            return numbers;
+
+            var collection = PagedCollection<int>.Create<PagedCollection<int>>(
+                Link.ToCollection(nameof(GetRandomNumbers)),
+                numbers.Items.ToArray(),
+                numbers.TotalSize,
+                pagingOptions);
+
+            return collection;
         }
     }
 }
