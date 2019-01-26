@@ -32,7 +32,7 @@ namespace PagingDemo.Controllers
             var numbers = _numbersService.GetNumbers(pagingOptions);
 
             var collection = PagedCollection<int>.Create<PagedCollection<int>>(
-                Link.ToCollection(nameof(GetRandomNumbers)),
+                Link.ToCollection(nameof(GetNumbers)),
                 numbers.Items.ToArray(),
                 numbers.TotalSize,
                 pagingOptions);
